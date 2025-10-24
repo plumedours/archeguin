@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
-    <section className="relative bg-gradient-to-r from-[#3B82F6] via-[#7C3AED] to-[#9333EA] text-white text-center py-32">
+    <section className="relative bg-gradient-to-b from-[#1E3A8A] via-[#2563EB] to-[#38BDF8] text-white text-center py-32">
       <div className="max-w-4xl mx-auto px-4">
         <img src={asset("logo.png")} alt="Logo Archeguin" className="h-24 mx-auto mb-8 drop-shadow-xl" />
         <h1 className="text-6xl font-extrabold mb-6 leading-tight">

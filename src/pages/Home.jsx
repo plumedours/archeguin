@@ -225,7 +225,7 @@ export default function Home() {
             </section>
 
             {/* CTA final */}
-            <section className="bg-gradient-to-r from-[#7C3AED] to-[#9333EA] text-white py-20 text-center">
+            <section className="bg-gradient-to-t from-[#2563EB] to-[#38BDF8] text-white py-20 text-center">
                 <h2 className="text-4xl font-bold mb-6">Prêt à rejoindre l’aventure ?</h2>
                 <p className="text-lg mb-8">
                     Inscrivez-vous dès aujourd’hui et découvrez le plaisir du tir à l’arc.
