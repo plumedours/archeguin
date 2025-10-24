@@ -1,13 +1,15 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Forfaits from "./pages/Forfaits";
 import Galerie from "./pages/Galerie";
 import Contact from "./pages/Contact";
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="/">
+      <ScrollToTop />
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -17,5 +19,5 @@ export default function App() {
         </Routes>
       </Layout>
     </Router>
-  )
+  );
 }

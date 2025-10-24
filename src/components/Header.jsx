@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { asset } from "../utils/assets";
 
 export default function Header() {
   const location = useLocation();
@@ -15,7 +16,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 flex justify-between items-center h-16">
         {/* Logo + titre */}
         <Link to="/" className="flex items-center space-x-2">
-          <img src="/logo.png" alt="Logo Archeguin" className="h-10 w-10" />
+          <img src={asset("logo.png")} alt="Logo Archeguin" className="h-10 w-10" />
           <span className="text-xl font-bold text-[#3B82F6]">Archeguin</span>
         </Link>
 
@@ -39,7 +40,7 @@ export default function Header() {
 
           {/* Icône Facebook */}
           <a
-            href="https://www.facebook.com/profile.php?id=100057619741791" // 🔗 mets le vrai lien de ta page ici
+            href="https://www.facebook.com/profile.php?id=100057619741791"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-500 hover:text-[#3B82F6] transition"
