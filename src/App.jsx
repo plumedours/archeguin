@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Forfaits from "./pages/Forfaits";
 import Galerie from "./pages/Galerie";
 import Contact from "./pages/Contact";
+import Unsubscribe from "./pages/Unsubscribe";
 import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
           <Route path="/forfaits" element={<Forfaits />} />
           <Route path="/galerie" element={<Galerie />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/unsubscribe" element={<Unsubscribe />} />
         </Routes>
       </Layout>
     </Router>
