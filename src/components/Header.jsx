@@ -10,6 +10,7 @@ export default function Header() {
     { name: "Accueil", path: "/" },
     { name: "Forfaits", path: "/forfaits" },
     { name: "Galerie", path: "/galerie" },
+    { name: "Infolettre", path: "/newsletter/subscribe" },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -33,7 +34,7 @@ export default function Header() {
                 key={item.name}
                 to={item.path}
                 className={`font-medium transition ${
-                  location.pathname === item.path
+                  (item.path === "/" ? location.pathname === item.path : location.pathname.startsWith(item.path))
                     ? "text-[#3B82F6]"
                     : "text-gray-700 hover:text-[#3B82F6]"
                 }`}
@@ -129,7 +130,7 @@ export default function Header() {
               to={item.path}
               onClick={closeMenu}
               className={`text-lg font-medium py-2 px-4 rounded-lg transition ${
-                location.pathname === item.path
+                (item.path === "/" ? location.pathname === item.path : location.pathname.startsWith(item.path))
                   ? "bg-[#3B82F6] text-white"
                   : "text-gray-700 hover:bg-gray-100"
               }`}
