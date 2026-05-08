@@ -1,243 +1,309 @@
 import { Link } from "react-router-dom";
 import Hero from "../components/Hero";
+import Button from "../components/Button";
+import SectionHeading from "../components/SectionHeading";
 import { asset } from "../utils/assets";
+import { site } from "../config/site";
+
+import {
+  Target,
+  Trees,
+  UsersRound,
+  MapPin,
+  Calendar,
+  Users,
+  Sun,
+  Sparkles,
+} from "lucide-react";
+
+const features = [
+  {
+    icon: Target,
+    title: "Découverte & entraide",
+    text: "Un club accessible, où les membres partagent leurs conseils et accompagnent les nouveaux sans pression.",
+  },
+  {
+    icon: Trees,
+    title: "Pratique en saison",
+    text: "Salle intérieure pendant la saison froide et champ de tir extérieur disponible l’été sur demande.",
+  },
+  {
+    icon: UsersRound,
+    title: "Ambiance amicale",
+    text: "Un groupe convivial pour tirer quelques flèches, progresser à son rythme et passer un bon moment.",
+  },
+];
+
+const whyJoinUs = [
+  {
+    icon: Sparkles,
+    title: "Accessible à tous",
+    text: "Débutants ou confirmés, chacun trouve sa place dans une ambiance bienveillante.",
+  },
+  {
+    icon: Calendar,
+    title: "Horaires flexibles",
+    text: "Des séances régulières adaptées à différents rythmes de vie.",
+  },
+  {
+    icon: Users,
+    title: "Communauté active",
+    text: "Des membres passionnés qui partagent conseils et encouragements.",
+  },
+];
 
 export default function Home() {
-    return (
-        <>
-            {/* HERO */}
-            <Hero />
+  return (
+    <>
+      <Hero />
 
-            {/* Présentation + photo salle */}
-            <section className="max-w-7xl mx-auto p-12 grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                    <h2 className="text-4xl font-bold text-[#111827] mb-4">Un club accueillant</h2>
-                    <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                        Depuis plus de 40 ans, le club Archeguin réunit des passionnés à Saint-Romuald.
-                        Ici, on pratique pour le plaisir, on progresse à son rythme et on partage des conseils
-                        entre membres.
-                    </p>
-                    <p className="text-lg text-gray-700 leading-relaxed">
-                        La saison froide (automne → début printemps), nous disposons d’une salle intérieure.
-                        L’été, lorsque la salle est fermée, nous mettons à disposition un <strong>champ de tir extérieur
-                            </strong>. <span className="block mt-1">Pour les modalités pratiques (accès, horaires, distances),
-                            <Link to="/contact" className="text-[#3B82F6] font-medium hover:underline"> contactez-nous</Link>.</span>
-                    </p>
-                </div>
-                <div>
-                    <img
-                        src={asset("photos/salle.jpg")}
-                        alt="Salle de tir intérieure du club Archeguin"
-                        loading="lazy"
-                        decoding="async"
-                        className="rounded-2xl shadow-lg"
-                    />
-                    <p className="text-sm text-gray-500 mt-2 text-center italic">
-                        Salle intérieure (automne → début printemps) à Saint-Romuald
-                    </p>
-                </div>
-            </section>
+      <section className="section-shell py-18 sm:py-24">
+        <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="relative">
+            <img src={asset("photos/salle.jpg")} alt="Salle intérieure du club Archeguin" loading="lazy" className="aspect-[4/3] w-full rounded-[2rem] object-cover shadow-2xl shadow-[#18372b]/15" />
+            <div className="absolute -bottom-5 left-5 right-5 rounded-3xl border border-white/70 bg-white/85 p-4 shadow-xl backdrop-blur">
+              <p className="text-sm font-bold text-[#18372b]">Salle intérieure à Saint-Romuald</p>
+              <p className="text-sm text-[#607066]">Automne au début du printemps</p>
+            </div>
+          </div>
 
-            {/* Infos clés (adresse / saison / téléphone) */}
-            <section className="max-w-6xl mx-auto px-6 pb-4">
-                <div className="grid sm:grid-cols-3 gap-4">
-                    <div className="bg-white rounded-xl shadow p-5 text-center">
-                        <div className="text-2xl mb-1">📍</div>
-                        <p className="text-sm text-gray-500">Adresse</p>
-                        <p className="font-medium text-[#111827]"><a
-                            href="https://www.google.com/maps?q=265+Av.+Taniata,+Saint-Romuald,+QC+G6W+5M6"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gray-700 hover:text-[#3B82F6] transition"
-                        >265 Av. Taniata, Saint-Romuald</a></p>
-                    </div>
-                    <div className="bg-white rounded-xl shadow p-5 text-center">
-                        <div className="text-2xl mb-1">🗓️</div>
-                        <p className="text-sm text-gray-500">Périodes</p>
-                        <p className="font-medium text-[#111827]">
-                            Salle (automne → début printemps) · Extérieur (été)
-                        </p>
-                    </div>
-                    <div className="bg-white rounded-xl shadow p-5 text-center">
-                        <div className="text-2xl mb-1">☎️</div>
-                        <p className="text-sm text-gray-500">Téléphone</p>
-                        <p className="font-medium text-[#111827]"><a
-                            href="tel:+14188310564"
-                            className="text-gray-700 hover:text-[#3B82F6] transition"
-                        >(418) 831-0564</a></p>
-                    </div>
-                </div>
-            </section>
+          <div>
+            <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-[#a56a43]">Depuis plus de 40 ans</p>
+            <h2 className="text-4xl font-black tracking-tight text-[#18372b] sm:text-5xl">Un club de tir à l’arc accueillant et bien ancré.</h2>
+            <div className="mt-6 space-y-5 text-lg leading-8 text-[#425047]">
+              <p>
+                Archeguin réunit des passionnés à Saint-Romuald. On y pratique pour le plaisir, on progresse à son rythme et on partage des conseils entre membres.
+              </p>
+              <p>
+                Pendant la saison froide, les séances se déroulent en salle. L’été, lorsque la salle est fermée, un champ de tir extérieur à Saint-Lambert-de-Lauzon est disponible sur demande.
+              </p>
+            </div>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button to="/forfaits" variant="primary" arrow>Consulter les forfaits</Button>
+              <Button to="/contact" variant="ghost">Demander les modalités</Button>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Avantages (ton réaliste) */}
-            <section className="max-w-7xl mx-auto p-12 text-center">
-                <h2 className="text-3xl font-bold text-[#111827] mb-6">Pourquoi nous rejoindre ?</h2>
-                <div className="grid md:grid-cols-3 gap-6 mb-2">
-                    <div className="p-6 bg-white text-[#111827] rounded-xl shadow hover:shadow-lg transition-transform hover:-translate-y-0.5">
-                        🎯 <h3 className="text-xl font-bold mb-2">Découverte & entraide</h3>
-                        <p className="text-gray-700">
-                            Les membres partagent leurs expériences et accompagnent les nouveaux sans pression.
-                        </p>
-                    </div>
-                    <div className="p-6 bg-white text-[#111827] rounded-xl shadow hover:shadow-lg transition-transform hover:-translate-y-0.5">
-                        🏹 <h3 className="text-xl font-bold mb-2">Pratique en saison</h3>
-                        <p className="text-gray-700">
-                            Salle intérieure en période froide, et champ de tir extérieur l’été.
-                        </p>
-                    </div>
-                    <div className="p-6 bg-white text-[#111827] rounded-xl shadow hover:shadow-lg transition-transform hover:-translate-y-0.5">
-                        🤝 <h3 className="text-xl font-bold mb-2">Ambiance amicale</h3>
-                        <p className="text-gray-700">
-                            Un groupe simple et convivial, pour tirer quelques flèches et passer un bon moment.
-                        </p>
-                    </div>
-                </div>
-                <div className="mt-6">
-                    <Link
-                        to="/forfaits"
-                        className="inline-block bg-[#FACC15] text-[#111827] px-6 py-3 rounded-2xl font-semibold shadow hover:bg-[#fde047] transition
-                       focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#FACC15]/40"
-                    >
-                        Voir nos forfaits
-                    </Link>
-                </div>
-            </section>
+      <section className="section-shell pb-8">
+        <div className="grid gap-4 sm:grid-cols-3">
+          {features.map((feature) => {
+            const Icon = feature.icon;
 
-            {/* Nos installations (texte adapté + 2 colonnes) */}
-            <section className="max-w-7xl mx-auto p-12">
-                <h2 className="text-3xl font-bold text-[#111827] text-center mb-6">Où pratiquer avec Archeguin</h2>
-                <p className="text-lg text-gray-700 mb-8 text-center">
-                    Nous organisons la pratique selon les saisons : en intérieur lorsqu’il fait froid, et en extérieur quand revient l’été.
+            return (
+              <article
+                key={feature.title}
+                className="rounded-[2rem] border border-[#18372b]/10 bg-white p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl"
+              >
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#f6f4ee]">
+                  <Icon className="h-7 w-7 text-[#a56a43]" strokeWidth={2.2} />
+                </div>
+
+                <h3 className="mt-6 text-2xl font-black text-[#18372b]">
+                  {feature.title}
+                </h3>
+
+                <p className="mt-4 leading-8 text-[#607066]">
+                  {feature.text}
                 </p>
+              </article>
+            );
+          })}
+        </div>
+      </section>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                    <div className="p-6 bg-white rounded-xl shadow">
-                        <h3 className="text-lg font-semibold text-[#111827] mb-2">Salle intérieure · Saint-Romuald</h3>
-                        <ul className="text-gray-700 space-y-2 text-sm">
-                            <li>• Période : automne → début printemps</li>
-                            <li>• Pratique à l’abri, différentes distances possibles</li>
-                            <li>• Séances conviviales et sécuritaires</li>
-                        </ul>
-                    </div>
-                    <div className="p-6 bg-white rounded-xl shadow">
-                        <h3 className="text-lg font-semibold text-[#111827] mb-2">Champ de tir extérieur · Saint-Lambert-de-Lauzon</h3>
-                        <ul className="text-gray-700 space-y-2 text-sm">
-                            <li>• Période : été (lorsque la salle est fermée)</li>
-                            <li>• Pratique en plein air — distances variables</li>
-                            <li>
-                                • Détails d’accès et horaires :{" "}
-                                <Link to="/contact" className="text-[#3B82F6] font-medium hover:underline">contactez-nous</Link>
-                            </li>
-                        </ul>
-                    </div>
+      <section className="section-shell py-18 sm:py-24">
+        <SectionHeading eyebrow="Pourquoi nous rejoindre" title="Une ambiance conviviale, accessible et sécuritaire.">
+          Que vous veniez essayer, pratiquer régulièrement ou organiser une activité de groupe, tout est pensé pour rendre l’expérience simple et agréable.
+        </SectionHeading>
+        <div className="grid gap-5 md:grid-cols-3">
+          {whyJoinUs.map((item) => {
+            const Icon = item.icon;
+            return (
+              <article key={item.title} className="rounded-[2rem] border border-[#18372b]/10 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#18372b]/10">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#f6f4ee]">
+                  <Icon className="h-7 w-7 text-[#a56a43]" strokeWidth={2.2} />
                 </div>
-            </section>
+                <h3 className="mt-5 text-xl font-black text-[#18372b]">{item.title}</h3>
+                <p className="mt-3 leading-7 text-[#607066]">{item.text}</p>
+              </article>
+            );
+          })}
+        </div>
+      </section>
 
-            {/* Galerie teaser (cliquable) */}
-            <section className="max-w-7xl mx-auto p-12 text-center">
-                <h2 className="text-3xl font-bold text-[#111827] mb-6">Un aperçu de nos activités</h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                    <Link to="/galerie" className="group block">
-                        <img
-                            src={asset("photos/03.jpg")}
-                            alt="Aperçu 1"
-                            loading="lazy"
-                            decoding="async"
-                            className="rounded-xl shadow group-hover:opacity-90 transition"
-                        />
-                    </Link>
-                    <Link to="/galerie" className="group block">
-                        <img
-                            src={asset("photos/07.jpg")}
-                            alt="Aperçu 2"
-                            loading="lazy"
-                            decoding="async"
-                            className="rounded-xl shadow group-hover:opacity-90 transition"
-                        />
-                    </Link>
-                    <Link to="/galerie" className="group block">
-                        <img
-                            src={asset("photos/09.jpg")}
-                            alt="Aperçu 3"
-                            loading="lazy"
-                            decoding="async"
-                            className="rounded-xl shadow group-hover:opacity-90 transition"
-                        />
-                    </Link>
-                    <Link to="/galerie" className="group block">
-                        <img
-                            src={asset("photos/06.jpg")}
-                            alt="Aperçu 4"
-                            loading="lazy"
-                            decoding="async"
-                            className="rounded-xl shadow group-hover:opacity-90 transition hidden md:block"
-                        />
-                    </Link>
-                </div>
-                <Link to="/galerie" className="text-[#3B82F6] font-semibold hover:underline">
-                    Voir toute la galerie →
-                </Link>
-            </section>
+      <section className="relative overflow-hidden bg-[#143427] py-18 text-white sm:py-24">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.08),transparent_32%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(177,122,82,0.16),transparent_38%)]" />
 
-            {/* Section combinée : Avis Google + Facebook (deux cartes) */}
-            <section className="bg-[#F9FAFB] py-16">
-                <div className="max-w-6xl mx-auto px-6">
-                    <h2 className="text-3xl font-bold text-[#111827] text-center mb-10">Partagez votre avis & restez informé</h2>
-                    <div className="grid md:grid-cols-2 gap-6">
-                        {/* Avis Google */}
-                        <div className="p-6 bg-white rounded-2xl shadow border border-gray-100">
-                            <h3 className="text-xl font-semibold text-[#111827] mb-2">Votre avis compte</h3>
-                            <p className="text-gray-700 mb-4">
-                                Si vous avez déjà tiré avec nous, un court avis aidera d’autres personnes à nous découvrir.
-                            </p>
-                            <a
-                                href="https://share.google/l813Le2HEeagrG26d"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-block bg-[#3B82F6] text-white px-6 py-3 rounded-xl font-semibold shadow hover:bg-[#2563EB] transition"
-                            >
-                                🏹 Laisser un avis Google
-                            </a>
-                        </div>
+        <div className="section-shell relative z-10 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div>
+            <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-[#e8dcc7]">
+              Où pratiquer
+            </p>
 
-                        {/* Facebook simple */}
-                        <div className="p-6 bg-white rounded-2xl shadow border border-gray-100">
-                            <h3 className="text-xl font-semibold text-[#111827] mb-2">Suivez-nous sur Facebook</h3>
-                            <p className="text-gray-700 mb-4">
-                                Nous partageons des infos et quelques photos du club. Abonnez-vous pour être informé des annonces.
-                            </p>
-                            <a
-                                href="https://www.facebook.com/profile.php?id=100057619741791"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-block bg-[#111827] text-white px-6 py-3 rounded-xl font-semibold shadow hover:bg-black/80 transition"
-                            >
-                                👍 Suivre Archeguin
-                            </a>
-                        </div>
-                    </div>
+            <h2 className="text-4xl font-black tracking-tight sm:text-5xl">
+              Deux lieux selon les saisons.
+            </h2>
 
-                    {/* Séparateur subtil avant le CTA final */}
-                    <div className="max-w-6xl mx-auto">
-                        <hr className="mt-12 border-t border-gray-200/70" />
-                    </div>
-                </div>
-            </section>
+            <p className="mt-5 max-w-xl text-lg leading-8 text-white/75">
+              Nous organisons la pratique selon la période de l’année : à l’intérieur pendant la saison froide, puis à l’extérieur durant l’été.
+            </p>
+          </div>
 
-            {/* CTA final */}
-            <section className="bg-gradient-to-t from-[#2563EB] to-[#38BDF8] text-white py-20 text-center">
-                <h2 className="text-4xl font-bold mb-6">Prêt à rejoindre l’aventure ?</h2>
-                <p className="text-lg mb-8">
-                    Inscrivez-vous dès aujourd’hui et découvrez le plaisir du tir à l’arc.
-                </p>
-                <Link
-                    to="/forfaits"
-                    className="bg-[#FACC15] text-[#111827] px-8 py-4 rounded-2xl font-semibold shadow hover:bg-[#fde047] transition
-                     focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#FACC15]/40"
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="rounded-[2rem] border border-white/10 bg-white/[0.08] p-6 shadow-xl backdrop-blur-sm transition-all hover:-translate-y-1 hover:bg-white/[0.11]">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/10">
+                <MapPin className="h-6 w-6 text-[#e8dcc7]" />
+              </div>
+              <h3 className="mt-4 text-xl font-black text-white">
+                Salle intérieure
+              </h3>
+
+              <p className="mt-2 leading-7 text-white/68">
+                Saint-Romuald · automne au début du printemps
+              </p>
+
+              <ul className="mt-5 space-y-3 text-sm text-white/78">
+                <li>• Pratique à l’abri</li>
+                <li>• Séances conviviales</li>
+                <li>• Vendredi accessible aux visiteurs</li>
+              </ul>
+            </div>
+
+            <div className="rounded-[2rem] border border-white/10 bg-white/[0.08] p-6 shadow-xl backdrop-blur-sm transition-all hover:-translate-y-1 hover:bg-white/[0.11]">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/10">
+                <Sun className="h-6 w-6 text-[#e8dcc7]" />
+              </div>
+              <h3 className="mt-4 text-xl font-black text-white">
+                Champ extérieur
+              </h3>
+
+              <p className="mt-2 leading-7 text-white/68">
+                Saint-Lambert-de-Lauzon · été
+              </p>
+
+              <ul className="mt-5 space-y-3 text-sm text-white/78">
+                <li>• Accès sur demande</li>
+                <li>• Plein air</li>
+                <li>• Modalités transmises par le club</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell py-18 sm:py-24">
+        <div className="grid items-end gap-6 sm:grid-cols-[1fr_auto]">
+          <SectionHeading eyebrow="Galerie" title="Un aperçu de nos activités" align="left">
+            Une présentation plus visuelle, avec lightbox, pour mieux mettre les photos du club en valeur.
+          </SectionHeading>
+          <Button className="mb-5" to="/galerie" variant="ghost" arrow>Voir la galerie</Button>
+        </div>
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+          {["photos/03.jpg", "photos/07.jpg", "photos/09.jpg", "photos/06.jpg"].map((photo, index) => (
+            <Link key={photo} to="/galerie" className={`group overflow-hidden rounded-3xl shadow-sm ${index === 0 ? "md:row-span-2" : ""}`}>
+              <img src={asset(photo)} alt="Aperçu de la galerie Archeguin" loading="lazy" className="h-full min-h-44 w-full object-cover transition duration-500 group-hover:scale-105" />
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="section-shell pb-18 sm:pb-24">
+        <div className="grid gap-5 lg:grid-cols-3">
+
+          {/* newsletter */}
+          <div
+            className="
+        relative
+        overflow-hidden
+        rounded-[2rem]
+        bg-gradient-to-br
+        from-[#9d633d]
+        via-[#b17349]
+        to-[#c08a62]
+        p-8
+        text-white
+        shadow-xl
+        ring-1
+        ring-white/10
+        lg:col-span-2
+      "
+          >
+            {/* lighting */}
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.18),transparent_32%)]" />
+
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.08),transparent_30%)]" />
+
+            <div className="relative z-10">
+              <p className="text-sm font-bold uppercase tracking-[0.28em] text-white/70">
+                Infolettre
+              </p>
+
+              <h2 className="mt-4 text-3xl font-black sm:text-4xl">
+                Recevez les nouvelles importantes du club.
+              </h2>
+
+              <p className="mt-4 max-w-2xl leading-7 text-white/85">
+                Activités, communications, rappels de saison et informations utiles directement par courriel.
+              </p>
+
+              <div className="mt-7">
+                <Button to="/newsletter/subscribe" variant="light">
+                  S’inscrire à l’infolettre
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* social */}
+          <div
+            className="
+        relative
+        overflow-hidden
+        rounded-[2rem]
+        border
+        border-[#18372b]/10
+        bg-white
+        p-8
+        shadow-sm
+      "
+          >
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(24,55,43,0.05),transparent_28%)]" />
+
+            <div className="relative z-10">
+              <h3 className="text-xl font-black text-[#18372b]">
+                Restez connecté
+              </h3>
+
+              <p className="mt-3 leading-7 text-[#607066]">
+                Suivez les publications du club et laissez un avis après votre passage.
+              </p>
+
+              <div className="mt-6 grid gap-3">
+                <Button
+                  href={site.facebookUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="primary"
                 >
-                    Rejoindre Archeguin
-                </Link>
-            </section>
-        </>
-    );
+                  Facebook
+                </Button>
+
+                <Button
+                  href={site.googleReviewUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="ghost"
+                >
+                  Avis Google
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
 }

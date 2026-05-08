@@ -1,237 +1,393 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import Button from "../components/Button";
+import SectionHeading from "../components/SectionHeading";
 import { asset } from "../utils/assets";
+import { usePublicJson } from "../utils/usePublicJson";
+
+const fallbackPrices = {
+  membershipPlans: [
+    {
+      name: "Adultes",
+      subtitle: "18 ans et plus",
+      price: "115 $",
+      description: "Accès aux séances du club pendant la saison.",
+    },
+    {
+      name: "Jeunes",
+      subtitle: "12 à 17 ans",
+      price: "75 $",
+      description: "Même accès que les adultes à un tarif réduit.",
+      highlight: true,
+      badge: "Tarif avantage",
+    },
+    {
+      name: "Enfants",
+      subtitle: "Moins de 12 ans",
+      price: "Gratuit* ou 75 $",
+      description: "Gratuit si accompagné d’un adulte inscrit.",
+    },
+  ],
+  dropIn: {
+    title: "Séance ponctuelle / essai",
+    price: "15 $",
+    items: [
+      "Durée maximale : 2 heures",
+      "Matériel fourni",
+      "Vendredi de 19h à 21h",
+      "Aucune réservation nécessaire",
+    ],
+  },
+  groups: {
+    title: "Activité pour entreprises ou groupes",
+    price: "12.50 $ par personne",
+    items: [
+      "Minimum : 15 personnes",
+      "Maximum : 30 personnes",
+      "Durée : environ 2 heures",
+    ],
+  },
+  notes: [
+    "Économisez 15 % pour 2 inscriptions ou plus à la même adresse.",
+    "Des frais additionnels de 35 $ s’appliquent pour l’adhésion obligatoire à la fédération.",
+  ],
+};
+
+const groupPhotos = ["photos/10.jpg", "photos/11.jpg", "photos/12.jpg", "photos/13.jpg"].map((src) =>
+  asset(src)
+);
 
 export default function Forfaits() {
   const [open, setOpen] = useState(false);
-  const photos = [
-    asset("photos/10.jpg"),
-    asset("photos/11.jpg"),
-    asset("photos/12.jpg"),
-    asset("photos/13.jpg"),
-  ];
+  const { data: prices } = usePublicJson("data/forfaits.json", fallbackPrices);
 
   return (
-    <section className="max-w-7xl mx-auto p-8">
+    <main>
+      <section className="section-shell py-14 sm:py-20">
+        <SectionHeading eyebrow="Forfaits" title="Choisissez la formule qui vous convient.">
+          Pratique régulière, séance d’essai ou activité de groupe : retrouvez ici les tarifs, les horaires et les informations utiles pour vous inscrire.
+        </SectionHeading>
 
-      {/* En-tête */}
-      <header className="text-center mb-12">
-        <h1 className="text-5xl font-bold text-[#111827] mb-4">Nos forfaits</h1>
-        <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-          Le club Archeguin propose différentes façons de pratiquer le tir à l’arc,
-          que ce soit comme membre régulier ou simplement pour venir essayer.
-        </p>
-      </header>
+        {/* Intro / CTA */}
+        <section className="relative mb-12 overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#10241c] via-[#34483f] to-[#b17a52] p-8 text-white shadow-xl ring-1 ring-white/10 sm:p-10">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.16),transparent_36%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.10),transparent_34%)]" />
 
-      {/* Horaires */}
-      <section className="mb-14 bg-[#F9FAFB] border border-gray-200 rounded-2xl p-8">
-        <h2 className="text-2xl font-bold text-[#111827] mb-6 text-center">
-          Horaires des séances
-        </h2>
+          <div className="relative z-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#e8dcc7]">
+                Inscription
+              </p>
 
-        <div className="grid md:grid-cols-2 gap-8">
+              <h2 className="mt-4 max-w-3xl text-3xl font-black tracking-tight sm:text-5xl">
+                Tout ce qu’il faut pour commencer ou poursuivre votre pratique.
+              </h2>
 
-          {/* Mercredi */}
-          <div className="bg-white rounded-xl shadow p-6">
-            <h3 className="text-xl font-bold mb-3">Mercredi — 19h30 à 21h</h3>
-            <p className="text-gray-700 mb-3">
-              Séance réservée aux archers ayant leur propre matériel.
-            </p>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-white/78">
+                Les forfaits couvrent la pratique régulière au club. Vous pouvez aussi venir essayer le tir à l’arc lors d’une séance ponctuelle.
+              </p>
+            </div>
 
-            <ul className="text-gray-700 text-sm space-y-2">
-              <li>🏹 Réservé aux archers avec leur équipement.</li>
-              <li>📦 Le matériel du club n’est pas disponible.</li>
-              <li>💸 Non-membres : 15 $ pour venir tirer.</li>
-              <li>ℹ️ Aucun encadrement ni prêt de matériel.</li>
-            </ul>
+            <div className="rounded-[1.6rem] border border-white/10 bg-white/[0.08] p-6 backdrop-blur-sm">
+              <p className="text-sm font-bold uppercase tracking-[0.22em] text-white/55">
+                À prévoir
+              </p>
+
+              <ul className="mt-4 space-y-3 text-sm leading-6 text-white/78">
+                <li>• Formulaire d’inscription disponible en PDF</li>
+                <li>• Rabais familial pour 2 inscriptions ou plus</li>
+                <li>• Frais de fédération applicables</li>
+              </ul>
+
+              <div className="mt-6">
+                <Button href={asset("formulaire-inscription-archeguin.pdf")} download variant="light">
+                  Télécharger le formulaire
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Horaire */}
+        <section className="mb-12 rounded-[2rem] border border-[#18372b]/10 bg-white p-6 shadow-sm sm:p-8">
+          <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.25em] text-[#a56a43]">
+                Horaire
+              </p>
+
+              <h2 className="mt-3 text-3xl font-black text-[#18372b]">
+                Séances de la semaine
+              </h2>
+
+              <p className="mt-4 leading-7 text-[#607066]">
+                Deux rendez-vous complémentaires selon votre niveau d’autonomie, votre équipement et votre objectif.
+              </p>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2">
+              <article className="rounded-[1.7rem] bg-[#f6f4ee] p-6 ring-1 ring-[#18372b]/5">
+                <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#a56a43]">
+                  Membres autonomes
+                </p>
+
+                <h3 className="mt-3 text-xl font-black text-[#18372b]">
+                  Mercredi · 19h30 à 21h
+                </h3>
+
+                <p className="mt-3 leading-7 text-[#607066]">
+                  Réservé aux membres et aux archers ayant leur propre matériel.
+                </p>
+
+                <ul className="mt-5 space-y-2 text-sm text-[#425047]">
+                  <li>• Matériel du club non disponible</li>
+                  <li>• Non-membres : 15 $</li>
+                  <li>• Aucun encadrement</li>
+                </ul>
+              </article>
+
+              <article className="relative overflow-hidden rounded-[1.7rem] bg-gradient-to-br from-[#18372b] to-[#2f4c40] p-6 text-white shadow-lg ring-1 ring-white/10">
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.12),transparent_35%)]" />
+
+                <div className="relative z-10">
+                  <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#e8dcc7]">
+                    Découverte
+                  </p>
+
+                  <h3 className="mt-3 text-xl font-black">
+                    Vendredi · 19h à 21h
+                  </h3>
+
+                  <p className="mt-3 leading-7 text-white/72">
+                    Ouvert à tous, idéal pour découvrir le tir à l’arc.
+                  </p>
+
+                  <ul className="mt-5 space-y-2 text-sm text-white/78">
+                    <li>• Membres ou visiteurs</li>
+                    <li>• Non-membres : 15 $</li>
+                    <li>• Matériel fourni selon disponibilité</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* Abonnements */}
+        <section className="mb-12">
+          <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.25em] text-[#a56a43]">
+                Abonnements
+              </p>
+
+              <h2 className="mt-2 text-3xl font-black text-[#18372b]">
+                Tarifs membres
+              </h2>
+            </div>
           </div>
 
-          {/* Vendredi */}
-          <div className="bg-white rounded-xl shadow p-6">
-            <h3 className="text-xl font-bold mb-3">Vendredi — 19h à 21h</h3>
-            <p className="text-gray-700 mb-3">
-              Séance ouverte à tous, idéale pour découvrir le tir à l’arc.
-            </p>
+          <div className="grid gap-5 md:grid-cols-3">
+            {prices.membershipPlans.map((plan) => (
+              <article
+                key={plan.name}
+                className={`relative overflow-hidden rounded-[2rem] border p-7 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl ${plan.highlight
+                  ? "border-[#a56a43]/30 bg-gradient-to-br from-[#18372b] via-[#28483a] to-[#a56a43] text-white"
+                  : "border-[#18372b]/10 bg-white text-[#18372b]"
+                  }`}
+              >
+                {plan.highlight && (
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.13),transparent_34%)]" />
+                )}
 
-            <ul className="text-gray-700 text-sm space-y-2">
-              <li>👋 Ouvert à tous, membres ou visiteurs.</li>
-              <li>💸 Non-membres : 15 $ pour tirer.</li>
-              <li>🏹 Matériel fourni (quantités limitées).</li>
-              <li>🎯 Parfait pour une première expérience.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+                <div className="relative z-10">
+                  {plan.badge && (
+                    <span className="mb-5 inline-flex rounded-full bg-[#e8dcc7] px-3 py-1 text-xs font-bold text-[#18372b]">
+                      {plan.badge}
+                    </span>
+                  )}
 
-      {/* Cartes tarifs */}
-      <div className="grid md:grid-cols-3 gap-8 mb-12">
+                  <p className={`text-sm font-bold uppercase tracking-[0.2em] ${plan.highlight ? "text-white/60" : "text-[#8a9a8f]"}`}>
+                    {plan.subtitle}
+                  </p>
 
-        <article className="p-8 bg-white rounded-2xl shadow hover:shadow-xl transition text-center">
-          <h3 className="text-2xl font-bold text-[#111827]">Adultes (18+)</h3>
-          <p className="text-5xl font-extrabold text-[#FACC15] my-4">115 $</p>
-          <p className="text-gray-700">
-            Accès aux séances du club pendant la saison.
-          </p>
-        </article>
+                  <h3 className="mt-3 text-2xl font-black">{plan.name}</h3>
 
-        <article className="p-8 bg-gradient-to-b from-[#F9FAFB] to-[#E0E7FF] border border-[#e5e7eb] rounded-2xl shadow-lg text-center relative">
-          <span className="absolute -top-3 right-4 bg-[#3B82F6] text-white text-xs px-3 py-1 rounded-full">
-            Tarif avantage
-          </span>
-          <h3 className="text-2xl font-bold text-[#111827]">Jeunes (12–17 ans)</h3>
-          <p className="text-5xl font-extrabold text-[#FACC15] my-4">75 $</p>
-          <p className="text-gray-700">
-            Même accès que les adultes à un tarif réduit.
-          </p>
-        </article>
+                  <p className={`my-6 text-4xl font-black ${plan.highlight ? "text-[#e8dcc7]" : "text-[#a56a43]"}`}>
+                    {plan.price}
+                  </p>
 
-        <article className="p-8 bg-white rounded-2xl shadow hover:shadow-xl transition text-center">
-          <h3 className="text-2xl font-bold text-[#111827]">Enfants (&lt; 12 ans)</h3>
-          <p className="text-3xl font-extrabold text-[#FACC15] my-4">Gratuit* ou 75 $</p>
-          <p className="text-gray-700 italic">
-           * Gratuit si accompagné d’un adulte inscrit.
-          </p>
-        </article>
-
-      </div>
-
-      {/* Séance ponctuelle */}
-      <section className="mb-12 p-8 rounded-2xl border border-gray-200 bg-white">
-        <h2 className="text-2xl font-bold text-[#111827] mb-4">
-          Séance ponctuelle / essai
-        </h2>
-
-        <p className="text-gray-700 mb-4">
-          Vous souhaitez simplement découvrir le tir à l’arc ?
-          Il est possible de venir essayer sans être membre.
-        </p>
-
-        <ul className="text-gray-700 space-y-2">
-          <li>💸 15 $ par personne</li>
-          <li>⏱ Durée maximale : 2 heures</li>
-          <li>🏹 Matériel fourni</li>
-          <li>📅 Vendredi de 19h à 21h</li>
-          <li>🚶‍♂️ Aucune réservation nécessaire — il suffit de se présenter sur place</li>
-        </ul>
-      </section>
-
-      {/* Nouvelle section entreprises */}
-      <section className="mb-12 p-8 bg-[#F9FAFB] border border-gray-200 rounded-2xl">
-        <h2 className="text-2xl font-bold text-[#111827] mb-4">
-          Activité pour entreprises ou groupes
-        </h2>
-
-        <p className="text-gray-700 mb-6">
-          Le club Archeguin peut également accueillir des groupes pour une
-          activité d’initiation au tir à l’arc. La salle peut être réservée
-          pour une séance privée idéale pour les activités d’équipe,
-          événements corporatifs ou groupes d’amis.
-        </p>
-
-        <div className="grid md:grid-cols-2 gap-6">
-
-          <div className="bg-white rounded-xl shadow p-6">
-            <h3 className="font-bold mb-3">Conditions</h3>
-            <ul className="text-gray-700 text-sm space-y-2">
-              <li>💰 12.50 $ par personne</li>
-              <li>👥 Minimum de facturation : 15 personnes</li>
-              <li>👥 Maximum : 30 personnes</li>
-              <li>⏱ Durée : environ 2 heures</li>
-            </ul>
-          </div>
-
-          <div className="bg-white rounded-xl shadow p-6">
-            <h3 className="font-bold mb-3">Organisation</h3>
-            <ul className="text-gray-700 text-sm space-y-2">
-              <li>📅 Réservation au moins 1 mois à l’avance</li>
-              <li>❄️ Activité offerte uniquement durant la saison hivernale</li>
-              <li>📍 Sous réserve de la disponibilité de la salle</li>
-              <li>🏹 Initiation et matériel fournis</li>
-            </ul>
-          </div>
-
-        </div>
-        {/* Galerie teaser (cliquable) */}
-        <section className="max-w-7xl mx-auto p-12 text-center">
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-            {photos.map((photo, index) => (
-              <img
-                key={index}
-                src={photo}
-                onClick={() => setOpen(index)}
-                className="cursor-pointer rounded-lg shadow hover:scale-105 transition"
-              />
+                  <p className={plan.highlight ? "leading-7 text-white/76" : "leading-7 text-[#607066]"}>
+                    {plan.description}
+                  </p>
+                </div>
+              </article>
             ))}
+          </div>
+        </section>
+
+        {/* Essai + groupes */}
+        <section className="mb-12 grid gap-5 lg:grid-cols-2">
+          <article className="rounded-[2rem] border border-[#18372b]/10 bg-white p-7 shadow-sm">
+            <p className="text-sm font-bold uppercase tracking-[0.25em] text-[#a56a43]">
+              Essai
+            </p>
+
+            <h2 className="mt-3 text-3xl font-black text-[#18372b]">
+              {prices.dropIn.title}
+            </h2>
+
+            <p className="mt-4 text-4xl font-black text-[#a56a43]">
+              {prices.dropIn.price}
+            </p>
+
+            <ul className="mt-6 space-y-4 text-[#425047]">
+              {prices.dropIn.items.map((item) => (
+                <li key={item} className="flex gap-3 leading-7">
+                  <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#a56a43]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+
+          <article className="rounded-[2rem] border border-[#18372b]/10 bg-white p-7 shadow-sm">
+            <p className="text-sm font-bold uppercase tracking-[0.25em] text-[#a56a43]">
+              Groupes
+            </p>
+
+            <h2 className="mt-3 text-3xl font-black text-[#18372b]">
+              {prices.groups.title}
+            </h2>
+
+            <p className="mt-4 text-3xl font-black text-[#a56a43]">
+              {prices.groups.price}
+            </p>
+
+            <ul className="mt-6 space-y-4 text-[#425047]">
+              {prices.groups.items.map((item) => (
+                <li key={item} className="flex gap-3 leading-7">
+                  <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#a56a43]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        </section>
+
+        {/* Activités privées */}
+        <section className="relative mb-12 overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#10241c] via-[#34483f] to-[#b17a52] p-6 text-white shadow-xl ring-1 ring-white/10 sm:p-8">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.14),transparent_34%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.08),transparent_34%)]" />
+
+          <div className="relative z-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.25em] text-[#e8dcc7]">
+                Activités privées
+              </p>
+
+              <h2 className="mt-3 text-3xl font-black">
+                Une activité originale pour votre groupe.
+              </h2>
+
+              <p className="mt-4 leading-7 text-white/76">
+                La salle peut être réservée pour une initiation privée, selon la disponibilité et la saison.
+              </p>
+
+              <div className="mt-6">
+                <Button to="/contact" variant="light">
+                  Organiser une activité
+                </Button>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 gap-3">
+              <button
+                key="photos/10.jpg"
+                type="button"
+                onClick={() => setOpen(1)}
+                className="focus-ring overflow-hidden rounded-3xl shadow-lg cursor-pointer"
+              >
+                <img
+                  src="photos/10.jpg"
+                  alt="Activité de groupe Archeguin"
+                  loading="lazy"
+                  className="aspect-[4/3] w-full object-cover transition duration-500 hover:scale-105"
+                />
+              </button>
+            </div>
           </div>
 
           <Lightbox
             open={open !== false}
-            index={open}
+            index={open || 0}
             close={() => setOpen(false)}
-            slides={photos.map((src) => ({ src }))}
+            slides={groupPhotos.map((src) => ({ src }))}
           />
-
         </section>
 
-        <div className="text-center">
-          <Link
-            to="/contact"
-            className="bg-[#3B82F6] text-white px-6 py-3 rounded-xl font-semibold shadow hover:bg-[#2563EB] transition"
-          >
-            Nous contacter pour organiser une activité
-          </Link>
-        </div>
+        {/* Notes + inscription */}
+        <section className="mb-12 grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
+          <aside className="rounded-[2rem] border border-[#a56a43]/20 bg-[#fff7ea] p-6 shadow-sm sm:p-7">
+            <p className="text-sm font-bold uppercase tracking-[0.22em] text-[#a56a43]">
+              À savoir
+            </p>
 
+            <h2 className="mt-3 text-2xl font-black text-[#18372b]">
+              Notes importantes
+            </h2>
+
+            <div className="mt-5 grid gap-4">
+              {prices.notes.map((note) => (
+                <div key={note} className="flex gap-3 leading-7 text-[#5d4938]">
+                  <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#a56a43]" />
+                  <p>{note}</p>
+                </div>
+              ))}
+            </div>
+          </aside>
+
+          <footer className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#10241c] via-[#34483f] to-[#b17a52] p-8 text-white shadow-xl ring-1 ring-white/10 sm:p-9">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.16),transparent_36%)]" />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.08),transparent_34%)]" />
+
+            <div className="relative z-10">
+              <p className="text-sm font-bold uppercase tracking-[0.22em] text-[#e8dcc7]">
+                Inscription
+              </p>
+
+              <h2 className="mt-3 text-3xl font-black">
+                Prêt à vous inscrire ?
+              </h2>
+
+              <p className="mt-4 max-w-2xl leading-7 text-white/78">
+                Téléchargez le formulaire à l’avance pour gagner du temps à l’accueil,
+                ou contactez-nous si vous avez une question avant de vous présenter.
+              </p>
+
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                <Button
+                  href={asset("formulaire-inscription-archeguin.pdf")}
+                  download
+                  variant="light"
+                >
+                  Télécharger le formulaire
+                </Button>
+
+                <Button to="/contact" variant="accent">
+                  Nous contacter
+                </Button>
+              </div>
+
+              <p className="mt-5 text-sm leading-6 text-white/65">
+                Pour recevoir les nouvelles du club, vous pouvez aussi vous inscrire à
+                l’infolettre depuis le menu principal.
+              </p>
+            </div>
+          </footer>
+        </section>
       </section>
-
-      {/* Notes */}
-      <section className="text-center space-y-4 mb-12">
-        <p className="text-lg text-gray-800">
-          👉 <strong>Économisez 15 %</strong> pour 2 inscriptions ou plus à la même adresse.
-        </p>
-
-        <p className="text-sm text-gray-600 italic">
-          * Gratuit pour les enfants s’ils sont accompagnés d’un adulte inscrit.
-        </p>
-
-        <aside className="mx-auto max-w-xl rounded-xl border border-[#FDE68A] bg-[#FFFBEB] p-4">
-          ⚠️ Des frais additionnels de <strong>35 $</strong> s’appliquent pour
-          l’adhésion obligatoire à la fédération (non requis pour une séance ponctuelle).
-        </aside>
-      </section>
-
-      {/* PDF */}
-      <footer className="text-center space-y-6">
-        <div>
-          <h2 className="text-2xl font-bold text-[#111827] mb-3">
-            Prêt à vous inscrire ?
-          </h2>
-          <p className="text-gray-700 mb-4">
-            Vous pouvez remplir le formulaire à l’avance pour gagner du temps à l’accueil.
-          </p>
-
-          <a
-            href={asset("formulaire-inscription-archeguin.pdf")}
-            download
-            className="inline-block bg-[#111827] text-white px-8 py-4 rounded-2xl font-semibold shadow hover:bg-black/80 transition"
-          >
-            📄 Télécharger le formulaire d’inscription
-          </a>
-        </div>
-
-        <div>
-          <Link
-            to="/contact"
-            className="inline-block bg-[#FACC15] text-[#111827] px-8 py-4 rounded-2xl font-semibold shadow hover:bg-[#fde047] transition"
-          >
-            Nous contacter
-          </Link>
-        </div>
-      </footer>
-
-    </section>
+    </main>
   );
 }

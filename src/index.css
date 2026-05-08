@@ -1,1 +1,65 @@
 @import "tailwindcss";
+
+:root {
+  color: #17201a;
+  background: #f6f4ee;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --forest: #18372b;
+  --forest-soft: #24513f;
+  --sage: #8fa88f;
+  --cream: #f6f4ee;
+  --sand: #e8dcc7;
+  --clay: #a56a43;
+  --ink: #17201a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(143, 168, 143, 0.22), transparent 32rem),
+    linear-gradient(180deg, #fbfaf7 0%, #f6f4ee 45%, #f3efe6 100%);
+}
+
+a {
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+button,
+a,
+input,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+img {
+  max-width: 100%;
+}
+
+.section-shell {
+  width: min(1120px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+.focus-ring {
+  outline: none;
+}
+
+.focus-ring:focus-visible {
+  box-shadow: 0 0 0 4px rgba(165, 106, 67, 0.28);
+}

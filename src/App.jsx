@@ -6,6 +6,7 @@ import Galerie from "./pages/Galerie";
 import Contact from "./pages/Contact";
 import NewsletterSubscribe from "./pages/NewsletterSubscribe";
 import NewsletterUnsubscribe from "./pages/NewsletterUnsubscribe";
+import Unsubscribe from "./pages/Unsubscribe";
 import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/newsletter/subscribe" element={<NewsletterSubscribe />} />
           <Route path="/newsletter/unsubscribe" element={<NewsletterUnsubscribe />} />
+          <Route path="/unsubscribe" element={<Unsubscribe />} />
         </Routes>
       </Layout>
     </Router>
