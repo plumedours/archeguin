@@ -1,0 +1,53 @@
+{
+  "updatedAt": "2026-05-07",
+  "membershipPlans": [
+    {
+      "name": "Adultes",
+      "subtitle": "18 ans et plus",
+      "price": "115 $",
+      "description": "Accès aux séances du club pendant la saison.",
+      "highlight": false
+    },
+    {
+      "name": "Jeunes",
+      "subtitle": "12 à 17 ans",
+      "price": "75 $",
+      "description": "Même accès que les adultes à un tarif réduit.",
+      "highlight": true,
+      "badge": "Tarif avantage"
+    },
+    {
+      "name": "Enfants",
+      "subtitle": "Moins de 12 ans",
+      "price": "Gratuit* ou 75 $",
+      "description": "Gratuit si accompagné d’un adulte inscrit.",
+      "highlight": false
+    }
+  ],
+  "dropIn": {
+    "title": "Séance ponctuelle / essai",
+    "price": "15 $",
+    "items": [
+      "Durée maximale : 2 heures",
+      "Matériel fourni le vendredi, selon les quantités disponibles",
+      "Vendredi de 19h à 21h",
+      "Aucune réservation nécessaire — il suffit de se présenter sur place"
+    ]
+  },
+  "groups": {
+    "title": "Activité pour entreprises ou groupes",
+    "price": "12.50 $ par personne",
+    "items": [
+      "Minimum de facturation : 15 personnes",
+      "Maximum : 30 personnes",
+      "Durée : environ 2 heures",
+      "Réservation au moins 1 mois à l’avance",
+      "Offert uniquement durant la saison hivernale",
+      "Initiation et matériel fournis"
+    ]
+  },
+  "notes": [
+    "Économisez 15 % pour 2 inscriptions ou plus à la même adresse.",
+    "Des frais additionnels de 35 $ s’appliquent pour l’adhésion obligatoire à la fédération, non requis pour une séance ponctuelle."
+  ]
+}
