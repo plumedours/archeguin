@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { asset } from "../utils/assets";
 import { site } from "../config/site";
 import Button from "./Button";
-import { FacebookIcon } from "./Icons";
+import { FacebookIcon, DiscordIcon } from "./Icons";
 
 export default function Footer() {
   return (
@@ -121,6 +121,16 @@ export default function Footer() {
               >
                 <FacebookIcon className="h-4 w-4" />
                 Facebook
+              </a>
+
+              <a
+                href={site.discordUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 transition-colors hover:text-white"
+              >
+                <DiscordIcon className="h-4 w-4" />
+                Discord
               </a>
 
               <a

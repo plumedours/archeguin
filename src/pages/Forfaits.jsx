@@ -3,6 +3,7 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import Button from "../components/Button";
 import SectionHeading from "../components/SectionHeading";
+import SeasonStatusBanner, { useSeasonStatus } from "../components/SeasonStatusBanner";
 import { asset } from "../utils/assets";
 import { usePublicJson } from "../utils/usePublicJson";
 
@@ -12,21 +13,28 @@ const fallbackPrices = {
       name: "Adultes",
       subtitle: "18 ans et plus",
       price: "115 $",
-      description: "Accès aux séances du club pendant la saison.",
+      description: "Tarif pour une inscription adulte individuelle.",
     },
     {
       name: "Jeunes",
-      subtitle: "12 à 17 ans",
+      subtitle: "12 à 18 ans",
       price: "75 $",
-      description: "Même accès que les adultes à un tarif réduit.",
+      description: "Tarif pour les jeunes de 12 à 18 ans.",
       highlight: true,
-      badge: "Tarif avantage",
+      badge: "Tarif jeune",
     },
     {
       name: "Enfants",
       subtitle: "Moins de 12 ans",
       price: "Gratuit* ou 75 $",
-      description: "Gratuit si accompagné d’un adulte inscrit.",
+      description: "Gratuit si un adulte inscrit habite à la même adresse; sinon 75 $.",
+    },
+    {
+      name: "Couple",
+      subtitle: "2 adultes · même adresse",
+      price: "200 $",
+      description: "Tarif pour deux adultes inscrits habitant à la même adresse.",
+      badge: "Même adresse",
     },
   ],
   dropIn: {
@@ -34,23 +42,27 @@ const fallbackPrices = {
     price: "15 $",
     items: [
       "Durée maximale : 2 heures",
-      "Matériel fourni",
+      "Matériel fourni le vendredi, selon les quantités disponibles",
       "Vendredi de 19h à 21h",
-      "Aucune réservation nécessaire",
+      "Aucune réservation nécessaire — il suffit de se présenter sur place",
     ],
   },
   groups: {
     title: "Activité pour entreprises ou groupes",
     price: "12.50 $ par personne",
     items: [
-      "Minimum : 15 personnes",
+      "Minimum de facturation : 15 personnes",
       "Maximum : 30 personnes",
       "Durée : environ 2 heures",
+      "Réservation au moins 1 mois à l’avance",
+      "Offert uniquement durant la saison hivernale",
+      "Initiation et matériel fournis",
     ],
   },
   notes: [
-    "Économisez 15 % pour 2 inscriptions ou plus à la même adresse.",
-    "Des frais additionnels de 35 $ s’appliquent pour l’adhésion obligatoire à la fédération.",
+    "Un enfant de moins de 12 ans est inscrit gratuitement lorsqu’un adulte à la même adresse est aussi inscrit; sinon le tarif enfant est de 75 $.",
+    "Le tarif couple de 200 $ s’applique à deux adultes inscrits habitant à la même adresse.",
+    "Des frais additionnels de 35 $ s’appliquent pour l’adhésion obligatoire à la fédération, non requis pour une séance ponctuelle.",
   ],
 };
 
@@ -61,6 +73,7 @@ const groupPhotos = ["photos/10.jpg", "photos/11.jpg", "photos/12.jpg", "photos/
 export default function Forfaits() {
   const [open, setOpen] = useState(false);
   const { data: prices } = usePublicJson("data/forfaits.json", fallbackPrices);
+  const { data: season } = useSeasonStatus();
 
   return (
     <main>
@@ -96,7 +109,7 @@ export default function Forfaits() {
 
               <ul className="mt-4 space-y-3 text-sm leading-6 text-white/78">
                 <li>• Formulaire d’inscription disponible en PDF</li>
-                <li>• Rabais familial pour 2 inscriptions ou plus</li>
+                <li>• Tarif couple disponible pour 2 adultes à la même adresse</li>
                 <li>• Frais de fédération applicables</li>
               </ul>
 
@@ -108,6 +121,8 @@ export default function Forfaits() {
             </div>
           </div>
         </section>
+
+        <SeasonStatusBanner className="mb-12" compact />
 
         {/* Horaire */}
         <section className="mb-12 rounded-[2rem] border border-[#18372b]/10 bg-white p-6 shadow-sm sm:p-8">
@@ -122,7 +137,7 @@ export default function Forfaits() {
               </h2>
 
               <p className="mt-4 leading-7 text-[#607066]">
-                Deux rendez-vous complémentaires selon votre niveau d’autonomie, votre équipement et votre objectif.
+                Ces horaires s’appliquent uniquement pendant la saison intérieure, d’octobre au début du printemps.
               </p>
             </div>
 
@@ -160,7 +175,9 @@ export default function Forfaits() {
                   </h3>
 
                   <p className="mt-3 leading-7 text-white/72">
-                    Ouvert à tous, idéal pour découvrir le tir à l’arc.
+                    {season.indoorOpen
+                      ? "Ouvert à tous, idéal pour découvrir le tir à l’arc."
+                      : "Séance suspendue pendant l’été. Reprise prévue en octobre."}
                   </p>
 
                   <ul className="mt-5 space-y-2 text-sm text-white/78">
@@ -188,7 +205,7 @@ export default function Forfaits() {
             </div>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {prices.membershipPlans.map((plan) => (
               <article
                 key={plan.name}
