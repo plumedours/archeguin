@@ -1,27 +1,35 @@
 {
-  "updatedAt": "2026-05-07",
+  "updatedAt": "2026-08-26",
   "membershipPlans": [
     {
       "name": "Adultes",
       "subtitle": "18 ans et plus",
       "price": "115 $",
-      "description": "Accès aux séances du club pendant la saison.",
+      "description": "Tarif pour une inscription adulte individuelle.",
       "highlight": false
     },
     {
       "name": "Jeunes",
-      "subtitle": "12 à 17 ans",
+      "subtitle": "12 à 18 ans",
       "price": "75 $",
-      "description": "Même accès que les adultes à un tarif réduit.",
+      "description": "Tarif pour les jeunes de 12 à 18 ans.",
       "highlight": true,
-      "badge": "Tarif avantage"
+      "badge": "Tarif jeune"
     },
     {
       "name": "Enfants",
       "subtitle": "Moins de 12 ans",
       "price": "Gratuit* ou 75 $",
-      "description": "Gratuit si accompagné d’un adulte inscrit.",
+      "description": "Gratuit si un adulte inscrit habite à la même adresse; sinon 75 $.",
       "highlight": false
+    },
+    {
+      "name": "Couple",
+      "subtitle": "2 adultes · même adresse",
+      "price": "200 $",
+      "description": "Tarif pour deux adultes inscrits habitant à la même adresse.",
+      "highlight": false,
+      "badge": "Même adresse"
     }
   ],
   "dropIn": {
@@ -47,7 +55,8 @@
     ]
   },
   "notes": [
-    "Économisez 15 % pour 2 inscriptions ou plus à la même adresse.",
+    "Un enfant de moins de 12 ans est inscrit gratuitement lorsqu’un adulte à la même adresse est aussi inscrit; sinon le tarif enfant est de 75 $.",
+    "Le tarif couple de 200 $ s’applique à deux adultes inscrits habitant à la même adresse.",
     "Des frais additionnels de 35 $ s’appliquent pour l’adhésion obligatoire à la fédération, non requis pour une séance ponctuelle."
   ]
 }
