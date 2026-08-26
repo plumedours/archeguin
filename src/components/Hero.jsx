@@ -1,35 +1,32 @@
+import { Link } from "react-router-dom";
 import { asset } from "../utils/assets";
 import { site } from "../config/site";
 import Button from "./Button";
-import { useSeasonStatus } from "./SeasonStatusBanner";
 import {
   CalendarDays,
   BadgeDollarSign,
   ShieldCheck,
 } from "lucide-react";
 
+const visitCards = [
+  {
+    icon: CalendarDays,
+    title: "Vendredi soir",
+    text: "Séance ouverte aux visiteurs",
+  },
+  {
+    icon: BadgeDollarSign,
+    title: "15 $",
+    text: "Séance de 19h à 21h",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Matériel fourni",
+    text: "Selon disponibilité",
+  },
+];
 
 export default function Hero() {
-  const { isOpen, content: seasonContent } = useSeasonStatus();
-
-  const visitCards = [
-    {
-      icon: CalendarDays,
-      title: isOpen ? "Vendredi soir" : "Reprise en octobre",
-      text: isOpen ? "Séance ouverte aux visiteurs" : "La salle est fermée pendant l’été",
-    },
-    {
-      icon: BadgeDollarSign,
-      title: "15 $",
-      text: isOpen ? "Séance de 19 h à 21 h" : "Tarif applicable à la reprise des séances",
-    },
-    {
-      icon: ShieldCheck,
-      title: isOpen ? "Matériel fourni" : "Champ extérieur",
-      text: isOpen ? "Selon disponibilité" : "Accessible aux membres sur demande",
-    },
-  ];
-
   return (
     <section className="relative isolate overflow-hidden bg-[#17201a] text-white">
       <div className="absolute inset-0 -z-10">
@@ -65,17 +62,17 @@ export default function Hero() {
               />
 
               <div>
-                <p className={`text-sm font-bold uppercase tracking-[0.22em] ${isOpen ? "text-emerald-700" : "text-[#a56a43]"}`}>
-                  {seasonContent.statusLabel}
+                <p className="text-sm font-bold uppercase tracking-[0.22em] text-[#a56a43]">
+                  Bienvenue
                 </p>
                 <h2 className="mt-1 text-2xl font-black">
-                  {seasonContent.title}
+                  Venez essayer le tir à l’arc.
                 </h2>
               </div>
             </div>
 
             <p className="mt-5 leading-7 text-[#607066]">
-              {seasonContent.message}
+              Le vendredi soir est idéal pour découvrir le club, poser vos questions et pratiquer avec nous.
             </p>
 
             <div className="mt-6 grid gap-3">

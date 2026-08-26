@@ -11,5 +11,4 @@ export const site = {
   googleReviewUrl: "https://share.google/l813Le2HEeagrG26d",
   contactFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfcXCQjiyi307et5eIWmEIcCeIHLpiRVoChWjwZu5-x3VmRKg/viewform?embedded=true",
   mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2748.278314259122!2d-71.20805422371153!3d46.72149637112079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cb89302d57c9d9b%3A0xb5ddf8ecb9f50a81!2s265%20Av.%20Taniata%2C%20L%C3%A9vis%2C%20QC!5e0!3m2!1sfr!2sca!4v1696025030000!5m2!1sfr!2sca",
-  discordUrl: "https://discord.gg/EMCeAR6RPf",
 };

@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import Hero from "../components/Hero";
 import Button from "../components/Button";
 import SectionHeading from "../components/SectionHeading";
-import SeasonStatusBanner from "../components/SeasonStatusBanner";
 import { asset } from "../utils/assets";
 import { site } from "../config/site";
 
@@ -58,10 +57,6 @@ export default function Home() {
     <>
       <Hero />
 
-      <section className="section-shell pt-8 sm:pt-10">
-        <SeasonStatusBanner />
-      </section>
-
       <section className="section-shell py-18 sm:py-24">
         <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="relative">
@@ -80,7 +75,7 @@ export default function Home() {
                 Archeguin réunit des passionnés à Saint-Romuald. On y pratique pour le plaisir, on progresse à son rythme et on partage des conseils entre membres.
               </p>
               <p>
-                Pendant la saison froide, les séances se déroulent en salle. L’été, lorsque la salle est fermée, un champ de tir extérieur à Saint-Étienne-de-Lauzon est disponible sur demande.
+                Pendant la saison froide, les séances se déroulent en salle. L’été, lorsque la salle est fermée, un champ de tir extérieur à Saint-Lambert-de-Lauzon est disponible sur demande.
               </p>
             </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -186,7 +181,7 @@ export default function Home() {
               </h3>
 
               <p className="mt-2 leading-7 text-white/68">
-                Saint-Étienne-de-Lauzon · été
+                Saint-Lambert-de-Lauzon · été
               </p>
 
               <ul className="mt-5 space-y-3 text-sm text-white/78">

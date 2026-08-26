@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import SectionHeading from "../components/SectionHeading";
-import SeasonStatusBanner from "../components/SeasonStatusBanner";
 import { site } from "../config/site";
 import {
   MapPin,
@@ -39,8 +39,6 @@ export default function Contact() {
         Informations de pratique, accès au champ extérieur, activités de groupe
         ou inscription : l’équipe d’Archeguin vous répondra avec plaisir.
       </SectionHeading>
-
-      <SeasonStatusBanner className="mb-12" />
 
       <div className="mb-12 grid gap-5 md:grid-cols-3">
         {contactCards.map((card) => {
@@ -106,17 +104,17 @@ export default function Contact() {
               {
                 title: "Vendredi soir",
                 time: "19h à 21h",
-                text: "En salle uniquement pendant la saison intérieure, d’octobre au début du printemps.",
+                text: "En salle, de l’automne au début du printemps.",
               },
               {
                 title: "Mercredi soir",
                 time: "19h30 à 21h",
-                text: "Pendant la saison intérieure, pour les membres et les archers autonomes avec leur matériel.",
+                text: "Pour les membres et les archers autonomes avec leur matériel.",
               },
               {
                 title: "Saison estivale",
                 time: "Sur demande",
-                text: "Champ extérieur à Saint-Étienne-de-Lauzon.",
+                text: "Champ extérieur à Saint-Lambert-de-Lauzon.",
               },
             ].map((item) => (
               <div

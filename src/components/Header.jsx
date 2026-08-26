@@ -3,7 +3,7 @@ import { useState } from "react";
 import { asset } from "../utils/assets";
 import { site } from "../config/site";
 import Button from "./Button";
-import { FacebookIcon, DiscordIcon } from "./Icons";
+import { FacebookIcon } from "./Icons";
 
 const navItems = [
   { name: "Accueil", path: "/" },
@@ -52,19 +52,10 @@ export default function Header() {
             href={site.facebookUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="focus-ring inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#18372b]/10 bg-white text-[#18372b] transition hover:border-[#18372b]/25"
+            className="focus-ring inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#18372b]/10 bg-white text-[#18372b] transition hover:-translate-y-0.5 hover:border-[#18372b]/25"
             aria-label="Facebook Archeguin"
           >
             <FacebookIcon />
-          </a>
-          <a
-            href={site.discordUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="focus-ring inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#18372b]/10 bg-white text-[#18372b] transition hover:border-[#18372b]/25"
-            aria-label="Serveur Discord"
-          >
-            <DiscordIcon />
           </a>
           <Button to="/forfaits" variant="accent">S’inscrire</Button>
         </div>
