@@ -1,62 +1,12 @@
 {
   "updatedAt": "2026-08-26",
   "membershipPlans": [
-    {
-      "name": "Adultes",
-      "subtitle": "18 ans et plus",
-      "price": "115 $",
-      "description": "Tarif pour une inscription adulte individuelle.",
-      "highlight": false
-    },
-    {
-      "name": "Jeunes",
-      "subtitle": "12 à 18 ans",
-      "price": "75 $",
-      "description": "Tarif pour les jeunes de 12 à 18 ans.",
-      "highlight": true,
-      "badge": "Tarif jeune"
-    },
-    {
-      "name": "Enfants",
-      "subtitle": "Moins de 12 ans",
-      "price": "Gratuit* ou 75 $",
-      "description": "Gratuit si un adulte inscrit habite à la même adresse; sinon 75 $.",
-      "highlight": false
-    },
-    {
-      "name": "Couple",
-      "subtitle": "2 adultes · même adresse",
-      "price": "200 $",
-      "description": "Tarif pour deux adultes inscrits habitant à la même adresse.",
-      "highlight": false,
-      "badge": "Même adresse"
-    }
+    {"name":"Adultes","subtitle":"18 ans et plus","price":"115 $","description":"Inscription individuelle pour un adulte.","highlight":false},
+    {"name":"Couple","subtitle":"2 adultes à la même adresse","price":"200 $","description":"Tarif pour deux adultes résidant à la même adresse.","highlight":true,"badge":"Tarif couple"},
+    {"name":"Jeunes","subtitle":"12 à 18 ans","price":"75 $","description":"Inscription pour un jeune de 12 à 18 ans.","highlight":false},
+    {"name":"Enfants","subtitle":"Moins de 12 ans","price":"Gratuit* ou 75 $","description":"Gratuit si un adulte résidant à la même adresse est également inscrit, sinon 75 $.","highlight":false}
   ],
-  "dropIn": {
-    "title": "Séance ponctuelle / essai",
-    "price": "15 $",
-    "items": [
-      "Durée maximale : 2 heures",
-      "Matériel fourni le vendredi, selon les quantités disponibles",
-      "Vendredi de 19h à 21h",
-      "Aucune réservation nécessaire — il suffit de se présenter sur place"
-    ]
-  },
-  "groups": {
-    "title": "Activité pour entreprises ou groupes",
-    "price": "12.50 $ par personne",
-    "items": [
-      "Minimum de facturation : 15 personnes",
-      "Maximum : 30 personnes",
-      "Durée : environ 2 heures",
-      "Réservation au moins 1 mois à l’avance",
-      "Offert uniquement durant la saison hivernale",
-      "Initiation et matériel fournis"
-    ]
-  },
-  "notes": [
-    "Un enfant de moins de 12 ans est inscrit gratuitement lorsqu’un adulte à la même adresse est aussi inscrit; sinon le tarif enfant est de 75 $.",
-    "Le tarif couple de 200 $ s’applique à deux adultes inscrits habitant à la même adresse.",
-    "Des frais additionnels de 35 $ s’appliquent pour l’adhésion obligatoire à la fédération, non requis pour une séance ponctuelle."
-  ]
+  "dropIn": {"title":"Séance ponctuelle / essai","price":"15 $","items":["Pour les non-membres","Durée maximale : 2 heures","Matériel fourni le vendredi, selon les quantités disponibles","Vendredi de 19h à 21h pendant la saison intérieure","Aucune réservation nécessaire — il suffit de se présenter sur place"]},
+  "groups": {"title":"Activité pour entreprises ou groupes","price":"12.50 $ par personne","items":["Minimum de facturation : 15 personnes","Maximum : 30 personnes","Durée : environ 2 heures","Réservation au moins 1 mois à l’avance","Offert uniquement durant la saison hivernale","Initiation et matériel fournis"]},
+  "notes":["Le tarif enfant gratuit s’applique lorsqu’un adulte résidant à la même adresse est également inscrit.","Des frais additionnels de 35 $ s’appliquent pour l’adhésion obligatoire à la fédération, non requis pour une séance ponctuelle."]
 }
