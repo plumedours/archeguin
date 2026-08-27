@@ -3,8 +3,8 @@
   "indoorOpen": false,
   "reopening": {
     "show": true,
-    "label": "Réouverture prochaine",
-    "text": "Le 9 octobre 2026"
+    "label": "Prochaine saison",
+    "text": "Rendez-vous à l’automne prochain"
   },
   "open": {
     "statusLabel": "Salle intérieure ouverte",
